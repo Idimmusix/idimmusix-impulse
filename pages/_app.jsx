@@ -1,10 +1,17 @@
-if (process.env.NODE_ENV === "development") {
-  import("impulse-monorepo").then((impulse) => impulse.run());
-}
+// import dynamic from "next/dynamic";
+// import { Suspense } from "react";
+// if (process.env.NODE_ENV === "development") {
+//   import("@impulse/dev").then((impulse) => impulse.run());
+// }
 // import App from 'next/app'
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
+  {
+    process.env.NODE_ENV === "development" && (
+      <script src="https://cdn.jsdelivr.net/npm/@impulse.dev/runtime@latest/inject.js"></script>
+    );
+  }
 }
 
 // Only uncomment this method if you have blocking data requirements for
